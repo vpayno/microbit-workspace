@@ -54,7 +54,9 @@ jobs:
       - name: Cargo Clippy - sarif upload
         env:
           RUSTC_WRAPPER: "sccache"
-        run: cargo clippy --all-features --message-format=json | clippy-sarif | tee rust-clippy-results.sarif | sarif-fmt
+        run: |
+          ./.github/citools/debian-install-deps.sh
+          cargo clippy --all-features --message-format=json | clippy-sarif | tee rust-clippy-results.sarif | sarif-fmt
       - name: Upload analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v3
         with:
