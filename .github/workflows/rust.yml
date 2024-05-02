@@ -39,7 +39,7 @@ jobs:
       - name: Install dependencies via apt
         run: ./.github/citools/debian-install-deps.sh
       - name: Rust Version
-        run: |-
+        run: |
           {
             printf "\`\`\`text\n"
             rustc --version
@@ -63,7 +63,7 @@ jobs:
       - name: Cargo Clippy
         env:
           RUSTC_WRAPPER: "sccache"
-        run: |-
+        run: |
           {
             printf "\`\`\`text\n"
             cargo clippy --all-features |& strip-ansi || true
@@ -72,7 +72,7 @@ jobs:
       - name: Cargo Check
         env:
           RUSTC_WRAPPER: "sccache"
-        run: |-
+        run: |
           {
             printf "\`\`\`text\n"
             cargo check --verbose |& strip-ansi || true
@@ -82,7 +82,7 @@ jobs:
         env:
           RUSTC_WRAPPER: "sccache"
         continue-on-error: true
-        run: |-
+        run: |
           {
             printf "\`\`\`text\n"
             cargo test --verbose |& strip-ansi
@@ -92,7 +92,7 @@ jobs:
         env:
           RUSTC_WRAPPER: "sccache"
         continue-on-error: true
-        run: |-
+        run: |
           cargo llvm-cov clean --workspace
           cargo test
           cargo llvm-cov --no-clean

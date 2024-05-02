@@ -6,7 +6,7 @@ printf "\n"
 
 declare deb_pkg
 declare -a deb_pkgs=(
-	lcov
+	lcov llvm clang clang libclang-dev
 	build-essential curl wget libssl-dev
 	libwebkit2gtk-4.0-dev libgtk-3-dev libappindicator3-dev librsvg2-dev
 	libsoup-3.0-dev libwebkit2gtk-4.1-dev libxdo-dev

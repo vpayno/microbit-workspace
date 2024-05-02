@@ -53,7 +53,7 @@ jobs:
             printf "\n"
           } | tee -a "${GITHUB_STEP_SUMMARY}"
       - name: Analyzing the code with actionlint
-        run: |-
+        run: |
           echo "::add-matcher::.github/actionlint-matcher.json"
           for f in ./.github/workflows/*yml; do
             {
