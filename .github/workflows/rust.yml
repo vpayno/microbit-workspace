@@ -31,10 +31,10 @@ jobs:
           apt install -y xz-utils liblzma-dev zstd libzstd-dev bzip2 libbz2-dev bzip3 libbzip3-dev zip unzip gzip
           apt install -y curl libcurl4-openssl-dev wget
           apt install -y sudo
-      - name: Install dependencies via apt
-        run: ./.github/citools/debian-install-deps.sh
       - name: git checkout
         uses: actions/checkout@v4
+      - name: Install dependencies via apt
+        run: ./.github/citools/debian-install-deps.sh
       - name: Install LLVM and Clang
         uses: KyleMayes/install-llvm-action@v2
         with:
