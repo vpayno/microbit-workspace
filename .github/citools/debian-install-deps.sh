@@ -8,6 +8,7 @@ declare deb_pkg
 declare -a deb_pkgs=(
 	lcov llvm clang clang libclang-dev
 	build-essential curl wget libssl-dev
+	pkg-config
 )
 
 # to reduce resolution conflicts, installing one at a time
