@@ -24,6 +24,12 @@ If you don't have runme installed, you'll need to copy/paste the command. :)
 go install github.com/stateful/runme/v3@v3
 ```
 
+Install Playbook dependencies:
+
+```bash { background=false category=runme closeTerminalOnSuccess=true excludeFromRunAll=true interactive=true interpreter=bash name=setup-runme-deps promptEnv=true terminalRows=10 }
+go install github.com/charmbracelet/gum@latest
+```
+
 ## Installing Tools
 
 - Install [Ratatui CLI](https://github.com/RatatuiLabs/ratatui/tree/main/packages/cli)
