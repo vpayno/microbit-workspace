@@ -32,7 +32,7 @@ go install github.com/charmbracelet/gum@latest
 
 ## Installing Tools
 
-- Install [Ratatui CLI](https://github.com/RatatuiLabs/ratatui/tree/main/packages/cli)
+Install project dependencies.
 
 ```bash { background=false category=setup closeTerminalOnSuccess=true excludeFromRunAll=true interactive=true interpreter=bash name=setup-install-tools promptEnv=true terminalRows=10 }
 # install tool dependencies
