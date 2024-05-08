@@ -12,11 +12,11 @@ Personal workspace for learning Ratatui & Rust.
 - [Ratatui Website](https://ratatui.rs/)
 - [Rust](https://www.rust-lang.org/)
 
-## [RunMe Playbook](https://runme.dev)
+## RunMe Playbook
 
 This and other readme files in this repo are RunMe Plabooks.
 
-Use this playbook step/task to update the RunMe cli.
+Use this playbook step/task to update the [RunMe](https://runme.dev) cli.
 
 If you don't have runme installed, you'll need to copy/paste the command. :)
 
