@@ -86,6 +86,10 @@ set +x
 
 For [MicroPython Package Management](https://docs.micropython.org/en/latest/reference/packages.html), learing to use `mip` and `mpremote`.
 
+Adafruit MicroPython tutorials:
+
+- [Firmware Loading](https://learn.adafruit.com/micropython-basics-how-to-load-micropython-on-a-board)
+
 Install Python/MicroPython language dependencies.
 
 ```bash { background=false category=setup closeTerminalOnSuccess=true excludeFromRunAll=true interactive=true interpreter=bash name=setup-install-tools-micropython promptEnv=true terminalRows=10 }
