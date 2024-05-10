@@ -48,3 +48,21 @@ sudo nala install --no-autoremove -y gcc-arm-none-eabi
 
 set +x
 ```
+
+Install Rust language dependencies.
+
+```bash { background=false category=setup closeTerminalOnSuccess=true excludeFromRunAll=true interactive=true interpreter=bash name=setup-install-tools-rust promptEnv=true terminalRows=10 }
+# install rust language dependencies
+
+set -e
+set -x
+
+printf "\n"
+
+sudo nala install --no-autoremove -y gcc-arm-none-eabi
+
+cargo install probe-rs
+cargo install flip-link
+
+set +x
+```
