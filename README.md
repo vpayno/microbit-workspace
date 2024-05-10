@@ -66,3 +66,20 @@ cargo install flip-link
 
 set +x
 ```
+
+Install TinyGo language dependencies.
+
+```bash { background=false category=setup closeTerminalOnSuccess=true excludeFromRunAll=true interactive=true interpreter=bash name=setup-install-tools-tinygo promptEnv=true terminalRows=10 }
+# install tinygo language dependencies
+
+set -e
+set -x
+
+printf "\n"
+
+sudo nala install --no-autoremove -y gcc-arm-none-eabi
+
+go install github.com/tinygo-org/tinygo@latest
+
+set +x
+```
