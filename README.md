@@ -1,16 +1,18 @@
-# ratatui-rust-workspace
+# microbit-rust-workspace
 
-[![rust](https://github.com/vpayno/ratatui-rust-workspace/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/vpayno/ratatui-rust-workspace/actions/workflows/rust.yml)
-[![actionlint](https://github.com/vpayno/ratatui-rust-workspace/actions/workflows/gh-actions.yml/badge.svg?branch=main)](https://github.com/vpayno/ratatui-rust-workspace/actions/workflows/gh-actions.yml)
-[![spellcheck](https://github.com/vpayno/ratatui-rust-workspace/actions/workflows/spellcheck.yml/badge.svg?branch=main)](https://github.com/vpayno/ratatui-rust-workspace/actions/workflows/spellcheck.yml)
+[![rust](https://github.com/vpayno/microbit-rust-workspace/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/vpayno/microbit-rust-workspace/actions/workflows/rust.yml)
+[![actionlint](https://github.com/vpayno/microbit-rust-workspace/actions/workflows/gh-actions.yml/badge.svg?branch=main)](https://github.com/vpayno/microbit-rust-workspace/actions/workflows/gh-actions.yml)
+[![spellcheck](https://github.com/vpayno/microbit-rust-workspace/actions/workflows/spellcheck.yml/badge.svg?branch=main)](https://github.com/vpayno/microbit-rust-workspace/actions/workflows/spellcheck.yml)
 
-Personal workspace for learning Ratatui & Rust.
+Personal workspace for learning to use the Microbit with Rust, TinyGo and Python.
 
 ## Links
 
-- [Ratatui GitHub](https://github.com/ratatui-org/ratatui)
-- [Ratatui Website](https://ratatui.rs/)
-- [Rust](https://www.rust-lang.org/)
+- [Microbit GitHub](https://github.com/bbcmicrobit)
+- [Microbit Adafruit](https://learn.adafruit.com/category/micro-bit)
+- [Rust](https://github.com/nrf-rs/microbit)
+- [TinyGo](https://tinygo.org/docs/reference/microcontrollers/microbit/)
+- [MicroPython](https://github.com/bbcmicrobit/micropython)
 
 ## RunMe Playbook
 
@@ -32,17 +34,17 @@ go install github.com/charmbracelet/gum@latest
 
 ## Installing Tools
 
-Install project dependencies.
+Install generic tools dependencies.
 
-```bash { background=false category=setup closeTerminalOnSuccess=true excludeFromRunAll=true interactive=true interpreter=bash name=setup-install-tools promptEnv=true terminalRows=10 }
-# install tool dependencies
+```bash { background=false category=setup closeTerminalOnSuccess=true excludeFromRunAll=true interactive=true interpreter=bash name=setup-install-tools-generic promptEnv=true terminalRows=10 }
+# install generic tool dependencies
 
 set -e
 set -x
 
 printf "\n"
 
-: nothing to install
+sudo nala install --no-autoremove -y gcc-arm-none-eabi
 
 set +x
 ```
