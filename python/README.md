@@ -114,6 +114,8 @@ Uses the random number generator to direct the direction of the arrow.
 
 This is cool, it creates an interactive data file with the logged data.
 
+Example data file: [MY_DATA.HTM](./data/MY_DATA.HTM)
+
 - `log.set_mirroring(bool)`: mirrors log data to the console
 - `log.set_labels(label1, ...)`: text labels of data
 - `log.add(label, function, ...)`: map functions to labels
