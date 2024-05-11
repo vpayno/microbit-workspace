@@ -28,6 +28,14 @@ Needed a way to see all the pre-defined symbols.
 
 Should add button functionality to manually browse them.
 
+### Browse All Symbols
+
+Here we go, an image/symbol browser!
+
+- `button_a` scrolls left
+- `button_b` scrolls right
+- `pin_logo` replays the current image
+
 ### Play All Sounds
 
 Needed a way to hear all the pre-defined sounds.
