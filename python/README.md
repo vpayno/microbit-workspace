@@ -85,3 +85,7 @@ Need a new version that ses animation to show where North, East, West and South 
 ### Spin the Wheel
 
 Uses buttons instead of the compass to spin the arrow.
+
+### Random Pointer
+
+Uses the random number generator to direct the direction of the arrow.
