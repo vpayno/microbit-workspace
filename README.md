@@ -147,3 +147,7 @@ printf "\n"
 
 set +x
 ```
+
+## Experiments
+
+- [MicroPython](./python/README.md)
