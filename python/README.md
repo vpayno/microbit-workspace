@@ -110,3 +110,13 @@ Logs the accelerometer's data.
 - `accelerometer.get_x()`: returns the acceleration measurement in the x axis in milli-g
 - `accelerometer.get_y()`: returns the acceleration measurement in the y axis in milli-g
 - `accelerometer.get_z()`: returns the acceleration measurement in the z axis in milli-g
+
+### Dice
+
+Took a sec to get the order of events right so there's a low lag between button presses and user feedback.
+Using `button_x.get_presses()` helped a lot with the "responsiveness" feel of the app.
+
+Uses button `a` to decrement the dice face count and button `b` to increment the face count. Valid dice faces/sides are 4, 6, 8, 12 and 20.
+
+The user shakes the `microbit` to use the rng to roll the dice.
+If the user shakes it violently, it displays an angry face and rolls the dice anyway.
