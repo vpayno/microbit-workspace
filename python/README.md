@@ -21,3 +21,9 @@ The Dot display shows `?` for every byte.
 - `display.show(text)`: shows one character at a time without any animation
 - `audio.play(Sound)`: plays a sound
 - `speech.say(text)`: it just seems to play jiberish
+
+### Show All Symbols
+
+Needed a way to see all the pre-defined symbols.
+
+Should add button functionality to manually browse them.
