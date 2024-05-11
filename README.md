@@ -104,36 +104,38 @@ sudo nala install --no-autoremove -y gcc-arm-none-eabi cmake ninja-build srecord
 printf "\n"
 
 python --version
-pip install mpremote
+pip install --upgrade mpremote
 
-latest_python_version="$(pyenv versions | sed -r -e 's/\s//g' | grep '^3[.]' | tail -n 1)"
-pyenv local "${latest_python_version}"
-pyenv local
-printf "\n"
+if [[ ! -d .venv ]]; then
+    latest_python_version="$(pyenv versions --bare | grep '^3[.]' | sort -V | tail -n 1)"
+    pyenv local "${latest_python_version}"
+    pyenv local
+    printf "\n"
 
-latest_mp_version="$(pyenv versions | grep micropython | sed -r -e 's/\s//g')"
-if ! pyenv versions | grep -q "${latest_mp_version}"; then
-    pyenv install "${latest_mp_version}"
+    latest_mp_version="$(pyenv versions --bare | grep micropython | sort -V)"
+    if ! pyenv versions | grep -q "${latest_mp_version}"; then
+        pyenv install "${latest_mp_version}"
+        pyenv versions
+    fi
+    printf "\n"
+
+    # can't use pdm with micropython
+    # pyenv local "${latest_mp_version}"
+    # pyenv local
+    # printf "\n"
+
     pyenv versions
+    printf "\n"
+
+    # instead of pip use
+    # micropython -m mip install pkgname
+
+    pdm venv create -w virtualenv --with-pip python
+    printf "\n"
+
+    pdm use python
+    printf "\n"
 fi
-printf "\n"
-
-# can't use pdm with micropython
-# pyenv local "${latest_mp_version}"
-# pyenv local
-# printf "\n"
-
-pyenv versions
-printf "\n"
-
-# instead of pip use
-# micropython -m mip install pkgname
-
-pdm venv create -w virtualenv --with-pip python
-printf "\n"
-
-pdm use python
-printf "\n"
 
 # create lock file
 pdm lock
