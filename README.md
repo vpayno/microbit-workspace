@@ -14,6 +14,10 @@ Personal workspace for learning to use the Microbit with Rust, TinyGo and Python
 - [TinyGo](https://tinygo.org/docs/reference/microcontrollers/microbit/)
 - [MicroPython](https://github.com/bbcmicrobit/micropython)
 
+## Experiments
+
+- [MicroPython](./python/README.md)
+
 ## RunMe Playbook
 
 This and other readme files in this repo are RunMe Plabooks.
@@ -147,7 +151,3 @@ printf "\n"
 
 set +x
 ```
-
-## Experiments
-
-- [MicroPython](./python/README.md)
