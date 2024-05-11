@@ -33,3 +33,11 @@ Should add button functionality to manually browse them.
 Needed a way to hear all the pre-defined sounds.
 
 Should add button functionality to manually browse them.
+
+### Press a Button
+
+The buttons `button_a` and `button_b` have 3 methods:
+
+- `get_presses()`: returns the running total of the press events and resets the counter
+- `is_pressed()`: returns true if the button is currently in the pressed position
+- `was_pressed()`: returns true if the button was pressed since the last time we checked
