@@ -81,3 +81,7 @@ Not very useful as a compass.
 Need a new version that ses animation to show where North, East, West and South always are like a real compass.
 
 - `heading()`: has the annoying habit of forcing recalibrations, returns a number from 0 to 355 representing the degrees from North starting at 0°.
+
+### Spin the Wheel
+
+Uses buttons instead of the compass to spin the arrow.
