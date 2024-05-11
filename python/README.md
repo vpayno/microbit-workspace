@@ -59,3 +59,9 @@ Need to add a graphical graph of the sound levels.
 - `microphone.set_threshold(SoundEvent, value)`: adjust the sensitivity of the microphone
 - `microphone.sound_level()`: returns the sound pressure level from 0 to 255
 - `microphone.was_event()`: returns true if a sound event occurred since the last time it was checked
+
+### Light Meter
+
+Uses the LED to measure light.
+
+- `display.read_light_level()`: number from 0 to 255, not very sensitive
