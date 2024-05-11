@@ -47,3 +47,15 @@ The buttons `button_a` and `button_b` have 3 methods:
 Pet the Microbit by holding the logo button.
 
 - `pin_logo.is_touiched()`: returns true if the logo is currently being touched.
+
+### Sound Meter
+
+Shows the sound level from the microphone from `0` to `255`.
+
+Need to add a graphical graph of the sound levels.
+
+- `microphone.get_events()`: returns a touple of sound events
+- `microphone.is_event()`: returns true if the last sound event occurred
+- `microphone.set_threshold(SoundEvent, value)`: adjust the sensitivity of the microphone
+- `microphone.sound_level()`: returns the sound pressure level from 0 to 255
+- `microphone.was_event()`: returns true if a sound event occurred since the last time it was checked
