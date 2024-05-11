@@ -98,3 +98,11 @@ This is cool, it creates an interactive data file with the logged data.
 - `log.set_labels(label1, ...)`: text labels of data
 - `log.add(label, function, ...)`: map functions to labels
 - `@run_every(seconds)`: decorator used on a custom function to log data in the background
+
+### Shake Logger
+
+Logs the accelerometer's data.
+
+- `accelerometer.get_x()`: returns the acceleration measurement in the x axis in milli-g
+- `accelerometer.get_y()`: returns the acceleration measurement in the y axis in milli-g
+- `accelerometer.get_z()`: returns the acceleration measurement in the z axis in milli-g
