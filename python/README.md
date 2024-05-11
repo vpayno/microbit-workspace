@@ -72,7 +72,7 @@ Add a graph of the temperature?
 
 - `temperature()`: returns the integer temperature in Celsius
 
-### Compass
+### Fake Compass
 
 Uses an arrow to show which direction it's pointing in.
 
@@ -81,6 +81,10 @@ Not very useful as a compass.
 Need a new version that ses animation to show where North, East, West and South always are like a real compass.
 
 - `heading()`: has the annoying habit of forcing recalibrations, returns a number from 0 to 355 representing the degrees from North starting at 0°.
+
+### Real Compass
+
+This version behaves like a real compass.
 
 ### Spin the Wheel
 
