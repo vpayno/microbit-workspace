@@ -138,3 +138,9 @@ Uses button `a` to decrement the dice face count and button `b` to increment the
 
 The user shakes the `microbit` to use the rng to roll the dice.
 If the user shakes it violently, it displays an angry face and rolls the dice anyway.
+
+### [Entropy meter](./src/entropy-meter.py)
+
+Using the accelerometer to fill in the dots.
+
+It's interesting to just let it sit there and fill in on it's own over time.
