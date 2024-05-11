@@ -1,8 +1,8 @@
-# microbit-rust-workspace
+# microbit-workspace
 
-[![rust](https://github.com/vpayno/microbit-rust-workspace/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/vpayno/microbit-rust-workspace/actions/workflows/rust.yml)
-[![actionlint](https://github.com/vpayno/microbit-rust-workspace/actions/workflows/gh-actions.yml/badge.svg?branch=main)](https://github.com/vpayno/microbit-rust-workspace/actions/workflows/gh-actions.yml)
-[![spellcheck](https://github.com/vpayno/microbit-rust-workspace/actions/workflows/spellcheck.yml/badge.svg?branch=main)](https://github.com/vpayno/microbit-rust-workspace/actions/workflows/spellcheck.yml)
+[![rust](https://github.com/vpayno/microbit-workspace/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/vpayno/microbit-workspace/actions/workflows/rust.yml)
+[![actionlint](https://github.com/vpayno/microbit-workspace/actions/workflows/gh-actions.yml/badge.svg?branch=main)](https://github.com/vpayno/microbit-workspace/actions/workflows/gh-actions.yml)
+[![spellcheck](https://github.com/vpayno/microbit-workspace/actions/workflows/spellcheck.yml/badge.svg?branch=main)](https://github.com/vpayno/microbit-workspace/actions/workflows/spellcheck.yml)
 
 Personal workspace for learning to use the Microbit with Rust, TinyGo and Python.
 
