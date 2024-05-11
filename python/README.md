@@ -65,3 +65,9 @@ Need to add a graphical graph of the sound levels.
 Uses the LED to measure light.
 
 - `display.read_light_level()`: number from 0 to 255, not very sensitive
+
+### Temperature Meter
+
+Add a graph of the temperature?
+
+- `temperature()`: returns the integer temperature in Celsius
