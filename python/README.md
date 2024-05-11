@@ -42,6 +42,14 @@ Needed a way to hear all the pre-defined sounds.
 
 Should add button functionality to manually browse them.
 
+### Browse All Sounds
+
+Here we go, a sound browser!
+
+- `button_a` scrolls left
+- `button_b` scrolls right
+- `pin_logo` replays the current sound
+
 ### Press a Button
 
 The buttons `button_a` and `button_b` have 3 methods:
