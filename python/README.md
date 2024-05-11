@@ -41,3 +41,9 @@ The buttons `button_a` and `button_b` have 3 methods:
 - `get_presses()`: returns the running total of the press events and resets the counter
 - `is_pressed()`: returns true if the button is currently in the pressed position
 - `was_pressed()`: returns true if the button was pressed since the last time we checked
+
+### Pet a Microbit
+
+Pet the Microbit by holding the logo button.
+
+- `pin_logo.is_touiched()`: returns true if the logo is currently being touched.
