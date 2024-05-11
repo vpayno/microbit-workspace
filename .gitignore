@@ -29,3 +29,4 @@ Cargo.lock
 .python-version
 .pdm-python
 .venv
+.ccls-cache
