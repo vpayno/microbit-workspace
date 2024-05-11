@@ -12,7 +12,7 @@ Using the [online editor](https://python.microbit.org/v/3) to test these.
 
 I need to spend more time learning how to use the command-line tools.
 
-### Hello World
+### [Hello World](./src/hello-world.py)
 
 Unicode characters only seem to work in the console.
 The Dot display shows `?` for every byte.
@@ -22,13 +22,13 @@ The Dot display shows `?` for every byte.
 - `audio.play(Sound)`: plays a sound
 - `speech.say(text)`: it just seems to play jiberish
 
-### Show All Symbols
+### [Show All Symbols](./src/show-all-symbols.py)
 
 Needed a way to see all the pre-defined symbols.
 
 Should add button functionality to manually browse them.
 
-### Browse All Symbols
+### [Browse All Symbols](./src/browse-all-symbols.py)
 
 Here we go, an image/symbol browser!
 
@@ -36,13 +36,13 @@ Here we go, an image/symbol browser!
 - `button_b` scrolls right
 - `pin_logo` replays the current image
 
-### Play All Sounds
+### [Play All Sounds](./src/play-all-sounds.py)
 
 Needed a way to hear all the pre-defined sounds.
 
 Should add button functionality to manually browse them.
 
-### Browse All Sounds
+### [Browse All Sounds](./src/browse-all-sounds.py)
 
 Here we go, a sound browser!
 
@@ -50,7 +50,7 @@ Here we go, a sound browser!
 - `button_b` scrolls right
 - `pin_logo` replays the current sound
 
-### Press a Button
+### [Press a Button](./src/press-a-button.py)
 
 The buttons `button_a` and `button_b` have 3 methods:
 
@@ -58,13 +58,13 @@ The buttons `button_a` and `button_b` have 3 methods:
 - `is_pressed()`: returns true if the button is currently in the pressed position
 - `was_pressed()`: returns true if the button was pressed since the last time we checked
 
-### Pet a Microbit
+### [Pet a Microbit](./src/pet-the-microbit.py)
 
 Pet the Microbit by holding the logo button.
 
 - `pin_logo.is_touiched()`: returns true if the logo is currently being touched.
 
-### Sound Meter
+### [Sound Meter](./src/sound-meter.py)
 
 Shows the sound level from the microphone from `0` to `255`.
 
@@ -76,19 +76,19 @@ Need to add a graphical graph of the sound levels.
 - `microphone.sound_level()`: returns the sound pressure level from 0 to 255
 - `microphone.was_event()`: returns true if a sound event occurred since the last time it was checked
 
-### Light Meter
+### [Light Meter](./src/light-meter.py)
 
 Uses the LED to measure light.
 
 - `display.read_light_level()`: number from 0 to 255, not very sensitive
 
-### Temperature Meter
+### [Temperature Meter](./src/temperature-meter.py)
 
 Add a graph of the temperature?
 
 - `temperature()`: returns the integer temperature in Celsius
 
-### Fake Compass
+### [Fake Compass](./src/compass-fake.py)
 
 Uses an arrow to show which direction it's pointing in.
 
@@ -98,19 +98,19 @@ Need a new version that ses animation to show where North, East, West and South 
 
 - `heading()`: has the annoying habit of forcing recalibrations, returns a number from 0 to 355 representing the degrees from North starting at 0°.
 
-### Real Compass
+### [Real Compass](./src/compass-real.py)
 
 This version behaves like a real compass.
 
-### Spin the Wheel
+### [Spin the Wheel](./src/spin-the-wheel.py)
 
 Uses buttons instead of the compass to spin the arrow.
 
-### Random Pointer
+### [Random Pointer](./src/random-pointer.py)
 
 Uses the random number generator to direct the direction of the arrow.
 
-### Data Logger
+### [Data Logger](./src/data-logger.py)
 
 This is cool, it creates an interactive data file with the logged data.
 
@@ -119,7 +119,7 @@ This is cool, it creates an interactive data file with the logged data.
 - `log.add(label, function, ...)`: map functions to labels
 - `@run_every(seconds)`: decorator used on a custom function to log data in the background
 
-### Shake Logger
+### [Shake Logger](./src/shake-logger.py)
 
 Logs the accelerometer's data.
 
@@ -127,7 +127,7 @@ Logs the accelerometer's data.
 - `accelerometer.get_y()`: returns the acceleration measurement in the y axis in milli-g
 - `accelerometer.get_z()`: returns the acceleration measurement in the z axis in milli-g
 
-### Dice
+### [Dice](./src/dice.py)
 
 Took a sec to get the order of events right so there's a low lag between button presses and user feedback.
 Using `button_x.get_presses()` helped a lot with the "responsiveness" feel of the app.
