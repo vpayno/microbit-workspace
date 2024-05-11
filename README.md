@@ -17,6 +17,7 @@ Personal workspace for learning to use the Microbit with Rust, TinyGo and Python
 ## Experiments
 
 - [Rust](./rust/README.md)
+- [TinyGo](./tinygo/README.md)
 - [MicroPython](./python/README.md)
 
 ## RunMe Playbook
