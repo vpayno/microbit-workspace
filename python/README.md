@@ -144,3 +144,9 @@ If the user shakes it violently, it displays an angry face and rolls the dice an
 Using the accelerometer to fill in the dots.
 
 It's interesting to just let it sit there and fill in on it's own over time.
+
+### [Game of Life](./src/game-of-life.py)
+
+Trying out implementing the Game of Life on the microbit.
+
+Life is hard on the LEDs.
