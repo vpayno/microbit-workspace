@@ -150,3 +150,22 @@ It's interesting to just let it sit there and fill in on it's own over time.
 Trying out implementing the Game of Life on the microbit.
 
 Life is hard on the LEDs.
+
+### [Pomodoro Timer](./src/pomodoro-timer.py)
+
+Simple pomodoro timer.
+
+- defaults to a 45 minute work timer followed by a 15 minute break timer
+- issues an audible 5 minute warning
+- issues the work/break session end
+
+While in the `up arrow` state (waiting for the user to touch the `pin_logo` button):
+
+- `button_a` scrolls between predefined timers: 45|15, 60|25, 90|30, 5|1, 15|5, 30|10
+
+After the user presses the `pin_logo` button:
+
+- `button_b` pauses timer and `button_a` unpauses timer
+- `button_a` cancels/resets timero
+
+After both the work and break timers complete, it returns to the first state.
