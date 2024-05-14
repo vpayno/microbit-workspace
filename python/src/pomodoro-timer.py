@@ -13,6 +13,7 @@ class Pomodoro:
         :param break_duration: the length, in minutes, of the break timer
         """
 
+        self.seconds_in_minute: int = 60
         self.time_left: int = 0
         self.work_duration: int = work_duration
         self.break_duration: int = break_duration
@@ -25,10 +26,15 @@ class Pomodoro:
         :param fives_left: the number of 5 minute chunks left in the running timer.
         """
 
-        if fives_left == 1 and not self.warned and (self.work_duration > 5 or self.break_duration > 5):
-            music.play(music.BADDY)
+        if self.time_left == 1 and (self.work_duration == 5 or self.break_duration == 5):
+            print("INFO: 1 minute warning at " + str(self.time_left) + " minutes")
+            play_music_warning("BADDY")
+        elif fives_left == 1 and not self.warned and (self.work_duration > 5 or self.break_duration > 5):
+            print("INFO: 5 minute warning at " + str(self.time_left) + " minutes")
+            play_music_warning("BADDY")
 
-            if self.time_left <= 5:
+            if self.time_left == 5:
+                print("INFO: disabling timer warnings")
                 self.warned = not self.warned
 
     def _run_timer(self, name: str, duration: int) -> bool:
@@ -39,7 +45,9 @@ class Pomodoro:
         :return: true, completed | false, canceled
         """
 
-        print("INFO: starting " + name + " timer for " + str(self.work_duration) + " minutes")
+        print("INFO: starting " + name + " timer for " + str(duration) + " minutes")
+
+        display.scroll(str(duration))
 
         self.time_left = duration
 
@@ -59,7 +67,7 @@ class Pomodoro:
             self.time_left -= 1
 
             heartbeat: bool = True
-            count: int = 60
+            count: int = self.seconds_in_minute
 
             # counts seconds in a minute
             while count > 0:
@@ -104,13 +112,16 @@ class Pomodoro:
 
         if status:
             print("INFO: work timer completed")
-            display.show(Image.SMILE)
-            audio.play(Sound.HAPPY)
+            display.show(Image.HAPPY)
+            play_sound_warning("HAPPY")
             sleep(1000)
+
+            self.warned = False
 
             if self._run_timer("break", self.break_duration):
                 print("INFO: break timer completed")
                 display.show(Image.FABULOUS)
+                play_sound_warning("HAPPY")
                 sleep(1000)
             else:
                 print("INFO: break timer canceled")
@@ -120,6 +131,16 @@ class Pomodoro:
 
 
 # Helper functions
+
+
+def play_sound_warning(sound: str) -> None:
+    print("INFO: playing Sound." + sound)
+    audio.play(getattr(Sound, sound))
+
+
+def play_music_warning(song: str) -> None:
+    print("INFO: playing music." + song)
+    music.play(getattr(music, song))
 
 
 def reset_button_states() -> None:
