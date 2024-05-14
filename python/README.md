@@ -50,6 +50,14 @@ Here we go, a sound browser!
 - `button_b` scrolls right
 - `pin_logo` replays the current sound
 
+### [Browse All Music](./src/browse-all-music.py)
+
+Here we go, a music browser!
+
+- `button_a` scrolls left
+- `button_b` scrolls right
+- `pin_logo` replays the current sound
+
 ### [Press a Button](./src/press-a-button.py)
 
 The buttons `button_a` and `button_b` have 3 methods:
