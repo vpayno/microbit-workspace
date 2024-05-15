@@ -8,21 +8,34 @@ COUNT: int = len(songs)
 
 
 def browse_left(index: int) -> int:
+    """Scroll carousel to the left.
+
+    :param index: the current position
+    :return: the new position
+    """
     return (index - 1) % COUNT
 
 
 def browse_right(index: int) -> int:
+    """Scroll carousel to the right.
+
+    :param index: the current position
+    :return: the new position
+    """
     return (index + 1) % COUNT
 
 
 # Code in a 'while True:' loop repeats forever
 while True:
+    display.show(Image.ARROW_E)
+    sleep(500)
+    display.show(Image.ARROW_W)
+    sleep(500)
+
     if button_a.was_pressed():
         index = browse_left(index)
     elif button_b.was_pressed():
         index = browse_right(index)
-    elif pin_logo.is_touched():
-        print("INFO: not doing anything since the last song is already in a loop")
 
     song: str
 
