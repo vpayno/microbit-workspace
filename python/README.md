@@ -170,6 +170,7 @@ Simple pomodoro timer.
 While in the `up arrow` state (waiting for the user to touch the `pin_logo` button):
 
 - `button_a` scrolls between predefined timers: 45|15, 60|25, 90|30, 5|1, 15|5, 30|10
+- `button_b` toggles logging mode, defaults to disabled
 
 After the user presses the `pin_logo` button:
 

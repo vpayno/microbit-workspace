@@ -1,24 +1,36 @@
 # Imports go at the top
-from math import ceil
-
-import music
 from microbit import *
-
+import music
+from math import ceil
+import log
 
 # Pomodoro Timer Class
-class Pomodoro:
-    def __init__(self, work_duration: int = 45, break_duration: int = 15) -> None:
+class Pomodoro():
+    def __init__(self, log_mode_enabled: bool, work_duration: int = 45, break_duration: int = 15) -> None:
         """
         :param work_duration: the length, in minutes, of the work timer
         :param break_duration: the length, in minutes, of the break timer
         """
 
+        self.name = "generic"
         self.seconds_in_minute: int = 60
         self.time_left: int = 0
         self.work_duration: int = work_duration
         self.break_duration: int = break_duration
         self.second: int = 1_000
         self.warned: bool = False
+        self.completed: bool = False
+        self.log_enabled: bool = log_mode_enabled
+
+    def _log_data(self) -> None:
+        """Logs data on demand."""
+        if self.log_enabled:
+            # print("LOG: name=" + self.name + ", duration=" + str(getattr(self, self.name + "_duration")) + ", completed=" + str(self.completed))
+            log.add({
+              'name': self.name,
+              'duration': getattr(self, self.name + "_duration"),
+              'completed': str(self.completed)
+            })
 
     def _five_minute_warning(self, fives_left: int) -> None:
         """Private method used to issue the five minute warnings.
@@ -37,8 +49,9 @@ class Pomodoro:
                 print("INFO: disabling timer warnings")
                 self.warned = not self.warned
 
+
     def _run_timer(self, name: str, duration: int) -> bool:
-        """Runs the internal timer
+        """ Runs the internal timer
 
         :param name: work or break
         :param duration: in minutes
@@ -46,6 +59,9 @@ class Pomodoro:
         """
 
         print("INFO: starting " + name + " timer for " + str(duration) + " minutes")
+        print("INFO: logging enabled? " + "yes" if self.log_enabled else "no")
+
+        self.name = name
 
         display.scroll(str(duration))
 
@@ -57,6 +73,8 @@ class Pomodoro:
             # there are 12 fives in an hour, we can use that to
             # show timer progress in a non-distracting way
             fives: int = int(ceil((self.time_left % 60) / 5))
+            if fives == 0:
+                fives = 12
             clock_name: str = "CLOCK" + str(fives)
 
             print("INFO: showing clock face -> " + clock_name)
@@ -108,30 +126,38 @@ class Pomodoro:
     def start_timer(self) -> None:
         """Starts the timer and handles led and audio notifications."""
 
-        status: bool = self._run_timer("work", self.work_duration)
+        self.completed = self._run_timer("work", self.work_duration)
 
-        if status:
+        if self.completed:
+            self._log_data()
             print("INFO: work timer completed")
             display.show(Image.HAPPY)
             play_sound_warning("HAPPY")
             sleep(1000)
 
+            print("==============================")
+
+            self.completed = False
             self.warned = False
 
-            if self._run_timer("break", self.break_duration):
+            self.completed = self._run_timer("break", self.break_duration)
+
+            if self.completed:
+                self._log_data()
                 print("INFO: break timer completed")
                 display.show(Image.FABULOUS)
                 play_sound_warning("HAPPY")
                 sleep(1000)
             else:
+                self._log_data()
                 print("INFO: break timer canceled")
 
         else:
+            self._log_data()
             print("INFO: work timer canceled")
 
 
 # Helper functions
-
 
 def play_sound_warning(sound: str) -> None:
     print("INFO: playing Sound." + sound)
@@ -151,7 +177,7 @@ def reset_button_states() -> None:
     _ = button_b.was_pressed()
 
 
-def wait_for_pin_logo(selected: int, durations: "list[tuple[int, int]]") -> int:
+def wait_for_pin_logo(log_mode_enabled: bool, selected: int, durations: "list[tuple[int, int]]") -> "tuple[int, bool]":
     """Waits for the user to start the timer by pressing the pin_logo button
     and also gives the user the opportunity to change the timer defaults.
 
@@ -167,6 +193,8 @@ def wait_for_pin_logo(selected: int, durations: "list[tuple[int, int]]") -> int:
         sleep(500)
         display.show(Image.ARROW_W)
         sleep(500)
+        display.show(Image.ARROW_E)
+        sleep(500)
 
         # sleep(1000)
         # display.show(Image.ALL_ARROWS)
@@ -181,13 +209,28 @@ def wait_for_pin_logo(selected: int, durations: "list[tuple[int, int]]") -> int:
 
             display.show(Image.ARROW_N)
 
-    return selected
+        if button_b.was_pressed():
+            reset_button_states()
+            log_mode_enabled = not log_mode_enabled
+            print("INFO: logging enabled? " + "yes" if log_mode_enabled else "no")
+            display.scroll("log:" + str(log_mode_enabled))
+            sleep(500)
+
+    return (selected, log_mode_enabled)
 
 
 # defaults to 45:15
 durations: "list[tuple[int, int]]" = [(5, 1), (15, 5), (30, 10), (45, 15), (60, 25), (90, 30)]
 selected: int = 3
+log_mode_enabled: bool = False
+log.set_mirroring(True)
+log.set_labels("name", "duration", "completed", timestamp=log.SECONDS)
 
+# trying to increase the likelihood that the startup output doesn't get discarded
+sleep(100)
+print()
+print("START: Pomodoro Timer")
+print()
 
 # Code in a 'while True:' loop repeats forever
 while True:
@@ -195,12 +238,12 @@ while True:
     display.scroll(str(durations[selected]))
     sleep(1000)
 
-    selected = wait_for_pin_logo(selected, durations)
+    selected, log_mode_enabled = wait_for_pin_logo(log_mode_enabled, selected, durations)
 
     reset_button_states()
 
     display.show(Image.YES)
 
-    tomato: Pomodoro = Pomodoro(*durations[selected])
+    tomato: Pomodoro = Pomodoro(log_mode_enabled, *durations[selected])
 
     tomato.start_timer()
