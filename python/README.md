@@ -122,7 +122,7 @@ Uses the random number generator to direct the direction of the arrow.
 
 This is cool, it creates an interactive data file with the logged data.
 
-Example data file: [MY_DATA.HTM](./data/MY_DATA.HTM)
+Example data file: [MY_DATA.HTM](./data/data-logger.htm)
 
 - `log.set_mirroring(bool)`: mirrors log data to the console
 - `log.set_labels(label1, ...)`: text labels of data
@@ -162,6 +162,8 @@ Life is hard on the LEDs.
 ### [Pomodoro Timer](./src/pomodoro-timer.py)
 
 Simple pomodoro timer.
+
+Example data file: [MY_DATA.HTM](./data/pomodoro-timer.htm)
 
 - defaults to a 45 minute work timer followed by a 15 minute break timer
 - issues an audible 5 minute warning
