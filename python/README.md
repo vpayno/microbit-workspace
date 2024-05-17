@@ -180,3 +180,8 @@ After the user presses the `pin_logo` button:
 - `button_a` cancels/resets timero
 
 After both the work and break timers complete, it returns to the first state.
+
+### [Random Timer](./src/random-timer.py)
+
+I wanted to implement a timer that used an hourglass animation.
+The seconds/duration of the timer is set using an RNG.
