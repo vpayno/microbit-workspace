@@ -184,7 +184,7 @@ After both the work and break timers complete, it returns to the first state.
 ### [Random Timer](./src/random-timer.py)
 
 I wanted to implement a timer that used an hourglass animation.
-The seconds/duration of the timer is set using an RNG.
+The duration, in seconds, of the timer is set using an RNG.
 
 ### [Timer](./src/timer.py)
 
