@@ -22,11 +22,11 @@ Personal workspace for learning to use the Microbit with Rust, TinyGo and Python
 
 ## RunMe Playbook
 
-This and other readme files in this repo are RunMe Plabooks.
+This and other readme files in this repo are RunMe Playbooks.
 
-Use this playbook step/task to update the [RunMe](https://runme.dev) cli.
+Use this playbook step/task to update the [RunMe](https://runme.dev) CLI.
 
-If you don't have runme installed, you'll need to copy/paste the command. :)
+If you don't have RunMe installed, you'll need to copy/paste the command. :)
 
 ```bash { background=false category=runme closeTerminalOnSuccess=true excludeFromRunAll=true interactive=true interpreter=bash name=setup-install-runme promptEnv=true terminalRows=10 }
 go install github.com/stateful/runme/v3@v3
@@ -90,7 +90,7 @@ go install github.com/tinygo-org/tinygo@latest
 set +x
 ```
 
-For [MicroPython Package Management](https://docs.micropython.org/en/latest/reference/packages.html), learing to use `mip` and `mpremote`.
+For [MicroPython Package Management](https://docs.micropython.org/en/latest/reference/packages.html), learning to use `mip` and `mpremote`.
 
 Adafruit MicroPython tutorials:
 

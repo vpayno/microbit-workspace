@@ -20,7 +20,7 @@ The Dot display shows `?` for every byte.
 - `display.scroll(text)`: uses a scroll animation to display all the characters in the string
 - `display.show(text)`: shows one character at a time without any animation
 - `audio.play(Sound)`: plays a sound
-- `speech.say(text)`: it just seems to play jiberish
+- `speech.say(text)`: it just seems to play gibberish
 
 ### [Show All Symbols](./src/show-all-symbols.py)
 
@@ -78,7 +78,7 @@ Shows the sound level from the microphone from `0` to `255`.
 
 Need to add a graphical graph of the sound levels.
 
-- `microphone.get_events()`: returns a touple of sound events
+- `microphone.get_events()`: returns a tuple of sound events
 - `microphone.is_event()`: returns true if the last sound event occurred
 - `microphone.set_threshold(SoundEvent, value)`: adjust the sensitivity of the microphone
 - `microphone.sound_level()`: returns the sound pressure level from 0 to 255
@@ -102,9 +102,9 @@ Uses an arrow to show which direction it's pointing in.
 
 Not very useful as a compass.
 
-Need a new version that ses animation to show where North, East, West and South always are like a real compass.
+Need a new version that uses animation to show where North, East, West and South always are like a real compass.
 
-- `heading()`: has the annoying habit of forcing recalibrations, returns a number from 0 to 355 representing the degrees from North starting at 0°.
+- `heading()`: has the annoying habit of forcing re-calibrations, returns a number from 0 to 355 representing the degrees from North starting at 0°.
 
 ### [Real Compass](./src/compass-real.py)
 
@@ -144,7 +144,7 @@ Using `button_x.get_presses()` helped a lot with the "responsiveness" feel of th
 
 Uses button `a` to decrement the dice face count and button `b` to increment the face count. Valid dice faces/sides are 4, 6, 8, 12 and 20.
 
-The user shakes the `microbit` to use the rng to roll the dice.
+The user shakes the `microbit` to use the RNG to roll the dice.
 If the user shakes it violently, it displays an angry face and rolls the dice anyway.
 
 ### [Entropy meter](./src/entropy-meter.py)
@@ -177,7 +177,7 @@ While in the `up arrow` state (waiting for the user to touch the `pin_logo` butt
 After the user presses the `pin_logo` button:
 
 - `button_b` pauses timer and `button_a` unpauses timer
-- `button_a` cancels/resets timero
+- `button_a` cancels/resets timer
 
 After both the work and break timers complete, it returns to the first state.
 
