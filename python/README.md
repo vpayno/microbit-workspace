@@ -185,3 +185,38 @@ After both the work and break timers complete, it returns to the first state.
 
 I wanted to implement a timer that used an hourglass animation.
 The seconds/duration of the timer is set using an RNG.
+
+### [Timer](./src/timer.py)
+
+This is a "normal" timer.
+
+stage1:
+
+- `button_a`: used to select between units of `seconds`, `minutes`, or `hours`
+- `button_b`: used to confirm the selection
+
+stage2:
+
+- `pin_logo`: used to select the duration increment number (1, 5, 10, 30, 45)
+- `button_a`: used to increment the duration from 0 to the limit for the units:
+    - `seconds`: 90 seconds
+    - `minutes`: 90 minutes
+    - `hours`: 24 hours (batteries don't last that long so good luck with that)
+- `button_b`: used to confirm the selection
+
+stage3:
+
+A right arrow points to `button_b` to tell the user how to start the timer.
+
+The timer can also be reset by pressing `button_a`.
+
+stage4:
+
+This is the timer phase. It uses a classic | / - \ wheel animation as the heartbeat.
+The pomodoro timer has a way fancier animation.
+
+At `10%` left, it will play `BA_DING` and at completion it will play `DADADADUM`
+and show the happy face wearing sunglasses.
+
+- `button_a`: cancels timer, should be ignored during pause
+- `button_b`: pauses and unpauses the timer
