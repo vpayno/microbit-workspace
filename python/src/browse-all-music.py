@@ -48,4 +48,4 @@ while True:
     display.scroll(song)
     Music.play(getattr(Music, song))
 
-    sleep(1000)
+    sleep(1_000)

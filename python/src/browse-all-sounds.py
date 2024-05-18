@@ -47,4 +47,4 @@ while True:
     display.scroll(sound)
     audio.play(getattr(Sound, sound))
 
-    sleep(1000)
+    sleep(1_000)

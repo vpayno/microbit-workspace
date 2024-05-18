@@ -173,11 +173,11 @@ while True:
 
     life.redraw()
 
-    sleep(1000)
+    sleep(1_000)
 
     life.evolve()
 
     if life.alive <= 1:
         display.show(Image.NO)
-        sleep(2000)
+        sleep(2_000)
         life.setup()

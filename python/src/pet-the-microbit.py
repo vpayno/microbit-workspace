@@ -20,11 +20,10 @@ while True:
             print("INFO: sad")
             display.show(Image.SAD)
             audio.play(Sound.SAD)
-            sleep(1000)
+            sleep(1_000)
         else:
             print("INFO: angry")
             display.show(Image.ANGRY)
             # this sounds more like a bird call
             audio.play(Sound.YAWN)
-            sleep(1000)
-
+            sleep(1_000)

@@ -9,34 +9,94 @@ class Icons:
     ARROW_LT: Image = Image.ARROW_W
     ARROW_DN: Image = Image.ARROW_S
 
-    LOGO: Image = Image("09990:" "90609:" "90809:" "90069:" "09990:")
+    LOGO: Image = Image(
+        "09990:"
+        "90609:"
+        "90809:"
+        "90069:"
+        "09990:"
+    )  # fmt: off
 
-    PAUSE: Image = Image("00000:" "09090:" "09090:" "09090:" "00000:")
+    PAUSE: Image = Image(
+        "00000:"
+        "09090:"
+        "09090:"
+        "09090:"
+        "00000:"
+    )  # fmt: off
 
     # tried to make two overlapping arrows, looks more like a candy wrapper
-    CANDY: Image = Image("09000:" "99990:" "09090:" "09999:" "00090:")
+    CANDY: Image = Image(
+        "09000:"
+        "99990:"
+        "09090:"
+        "09999:"
+        "00090:"
+    )  # fmt: off
 
     # looks like a copyright C
-    SECOND_UNIT: Image = Image("66666:" "60996:" "69006:" "60996:" "66666:")
+    SECOND_UNIT: Image = Image(
+        "66666:"
+        "60996:"
+        "69006:"
+        "60996:"
+        "66666:"
+    )  # fmt: off
 
     # looks like an H
-    MINUTE_UNIT: Image = Image("66666:" "69096:" "69696:" "69096:" "66666:")
+    MINUTE_UNIT: Image = Image(
+        "66666:"
+        "69096:"
+        "69696:"
+        "69096:"
+        "66666:"
+    )  # fmt: off
 
     # looks like an h
-    HOUR_UNIT: Image = Image("66666:" "69006:" "69996:" "69096:" "66666:")
+    HOUR_UNIT: Image = Image(
+        "66666:"
+        "69006:"
+        "69996:"
+        "69096:"
+        "66666:"
+    )  # fmt: off
 
 
 class Wheel:
-    wheel0: Image = Image("00900:" "00900:" "00900:" "00900:" "00900:")
+    wheel0: Image = Image(
+        "00900:"
+        "00900:"
+        "00900:"
+        "00900:"
+        "00900:"
+    )  # fmt: off
     wheel4 = wheel0
 
-    wheel1: Image = Image("00009:" "00090:" "00900:" "09000:" "90000:")
+    wheel1: Image = Image(
+        "00009:"
+        "00090:"
+        "00900:"
+        "09000:"
+        "90000:"
+    )  # fmt: off
     wheel5 = wheel1
 
-    wheel2: Image = Image("00000:" "00000:" "99999:" "00000:" "00000:")
+    wheel2: Image = Image(
+        "00000:"
+        "00000:"
+        "99999:"
+        "00000:"
+        "00000:"
+    )  # fmt: off
     wheel6 = wheel2
 
-    wheel3: Image = Image("90000:" "09000:" "00900:" "00090:" "00009:")
+    wheel3: Image = Image(
+        "90000:"
+        "09000:"
+        "00900:"
+        "00090:"
+        "00009:"
+    )  # fmt: off
     wheel7 = wheel3
 
     def __init__(self) -> None:

@@ -86,6 +86,6 @@ while True:
         print("INFO: NORTH WEST is between 292°-270°, 270°-248°")
         display.show(Image.ARROW_NW)
 
-    sleep(2000)
+    sleep(2_000)
 
     heading = random.randint(DEGREES_N, DEGREES_N_ALT)

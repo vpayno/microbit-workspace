@@ -105,7 +105,7 @@ class Pomodoro():
                     display.show(Image.ARROW_W)
 
                     while not button_a.was_pressed():
-                        sleep(1000)
+                        sleep(1_000)
 
                     reset_button_states()
 
@@ -133,7 +133,7 @@ class Pomodoro():
             print("INFO: work timer completed")
             display.show(Image.HAPPY)
             play_sound_warning("HAPPY")
-            sleep(1000)
+            sleep(1_000)
 
             print("==============================")
 
@@ -147,7 +147,7 @@ class Pomodoro():
                 print("INFO: break timer completed")
                 display.show(Image.FABULOUS)
                 play_sound_warning("HAPPY")
-                sleep(1000)
+                sleep(1_000)
             else:
                 self._log_data()
                 print("INFO: break timer canceled")
@@ -196,7 +196,7 @@ def wait_for_pin_logo(log_mode_enabled: bool, selected: int, durations: "list[tu
         display.show(Image.ARROW_E)
         sleep(500)
 
-        # sleep(1000)
+        # sleep(1_000)
         # display.show(Image.ALL_ARROWS)
 
         if button_a.was_pressed():
@@ -236,7 +236,7 @@ print()
 while True:
     print("INFO: selected timer -> " + str(durations[selected]))
     display.scroll(str(durations[selected]))
-    sleep(1000)
+    sleep(1_000)
 
     selected, log_mode_enabled = wait_for_pin_logo(log_mode_enabled, selected, durations)
 

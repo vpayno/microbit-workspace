@@ -21,8 +21,8 @@ while True:
     # not the creepy giggle I was hopeing for
     print("INFO: Gigggle")
     audio.play(Sound.GIGGLE)
-    sleep(1000)
+    sleep(1_000)
     print("INFO: HELLO")
     # closer to the sound "hello"
     audio.play(Sound.HELLO)
-    sleep(1000)
+    sleep(1_000)

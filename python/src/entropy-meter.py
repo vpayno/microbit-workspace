@@ -18,4 +18,4 @@ while True:
     print("INFO:  dot=" + str(dot))
     display.set_pixel(*dot)
 
-    sleep(1000)
+    sleep(1_000)

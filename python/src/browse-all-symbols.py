@@ -47,4 +47,4 @@ while True:
     display.scroll(image)
     display.show(getattr(Image, image))
 
-    sleep(1000)
+    sleep(1_000)

@@ -96,4 +96,4 @@ while True:
         print("INFO: NORTH WEST is between 292°-270°, 270°-248°")
         display.show(Image.ARROW_NW)
 
-    sleep(1000)
+    sleep(1_000)
