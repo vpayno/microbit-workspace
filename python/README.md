@@ -240,3 +240,23 @@ stage2: emoji selection
 stage3: both microbits loop sending and receiving until they receive the other's message
 
 - `button_a` or `button_b` will unpause and return to the emoji browser.
+
+## [Rock-Paper-Scissors](./src/rock-paper-scissors.py)
+
+Rock-Paper-Scissors game.
+
+stage1: radio group selection
+
+- `button_a`: scroll backward between `0` and `255` by decrements of 7.
+- `button_b`: scroll forward between `0` and `255` by increments of 7.
+- `pin_logo`: confirms radio group selection.
+
+stage2: rock-paper-scissor move selection
+
+- `button_a`: scroll backward `[R, P, S]`
+- `button_b`: scroll forward `[R, P, S]`
+- `pin_logo`: confirms move selection.
+
+stage3: both microbits loop sending and receiving until they receive the other's "move".
+
+- `button_a` or `button_b` will unpause and return to the move selection stage.
