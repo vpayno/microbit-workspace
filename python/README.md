@@ -220,3 +220,23 @@ and show the happy face wearing sunglasses.
 
 - `button_a`: cancels timer, should be ignored during pause
 - `button_b`: pauses and unpauses the timer
+
+## [Messenger](./src/messenger.py)
+
+Simple emoji messenger.
+
+stage1: radio group selection
+
+- `button_a`: scroll backward between `0` and `255` by decrements of 7.
+- `button_b`: scroll forward between `0` and `255` by increments of 7.
+- `pin_logo`: confirms radio group selection.
+
+stage2: emoji selection
+
+- `button_a`: scroll backward emoji list
+- `button_b`: scroll forward emoji list
+- `pin_logo`: confirms emoji selection.
+
+stage3: both microbits loop sending and receiving until they receive the other's message
+
+- `button_a` or `button_b` will unpause and return to the emoji browser.
