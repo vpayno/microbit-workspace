@@ -239,12 +239,12 @@ class RockPaperScissors:
             sleep(500)
 
             if button_b.was_pressed():
-                self.group = (self.group + self.group_offset) % self.group_size
+                self.group = (max(self.group, 0) + self.group_offset) % self.group_size
                 print("INFO: current group [" + str(self.group) + "]")
                 display.scroll(self.group)
 
             if button_a.was_pressed():
-                self.group = (self.group - self.group_offset) % self.group_size
+                self.group = (max(self.group, 0) - self.group_offset) % self.group_size
                 print("INFO: current group [" + str(self.group) + "]")
                 display.scroll(self.group)
 
@@ -281,14 +281,14 @@ class RockPaperScissors:
             sleep(500)
 
             if button_b.was_pressed():
-                self.rune_index = (self.rune_index + 1) % self.runes_size
+                self.rune_index = (max(self.rune_index, 0) + self.rune_offset) % self.runes_size
                 self.rune_name = self.runes[self.rune_index]
                 print("INFO: current rune [" + self.rune_name + "]")
                 display.show(self.runes[self.rune_index])
                 sleep(500)
 
             if button_a.was_pressed():
-                self.rune_index = (self.rune_index - 1) % self.runes_size
+                self.rune_index = (max(self.rune_index, 0) - self.rune_offset) % self.runes_size
                 self.rune_name = self.runes[self.rune_index]
                 print("INFO: current rune [" + self.rune_name + "]")
                 display.show(self.rune_name)
