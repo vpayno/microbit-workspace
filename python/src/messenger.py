@@ -180,12 +180,12 @@ class Messenger:
             sleep(500)
 
             if button_b.was_pressed():
-                self.group = (self.group + self.group_offset) % self.group_size
+                self.group = (max(self.group, 0) + self.group_offset) % self.group_size
                 print("INFO: current group [" + str(self.group) + "]")
                 display.scroll(self.group)
 
             if button_a.was_pressed():
-                self.group = (self.group - self.group_offset) % self.group_size
+                self.group = (max(self.group, 0) - self.group_offset) % self.group_size
                 print("INFO: current group [" + str(self.group) + "]")
                 display.scroll(self.group)
 
@@ -220,13 +220,13 @@ class Messenger:
             sleep(500)
 
             if button_b.was_pressed():
-                self.image_index = (self.image_index + 1) % self.images_size
+                self.image_index = (max(self.image_index, 0) + 1) % self.images_size
                 self.image_name = self.images[self.image_index]
                 print("INFO: current image [" + self.image_name + "]")
                 display.scroll(self.images[self.image_index])
 
             if button_a.was_pressed():
-                self.image_index = (self.image_index - 1) % self.images_size
+                self.image_index = (max(self.image_index, 0) - 1) % self.images_size
                 self.image_name = self.images[self.image_index]
                 print("INFO: current image [" + self.image_name + "]")
                 display.scroll(self.image_name)
