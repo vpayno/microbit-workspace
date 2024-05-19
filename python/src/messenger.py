@@ -119,7 +119,7 @@ class Messenger:
 
         self.group: int = -1
         self.group_size: int = 256
-        self.group_offset: int = 7  # random.choice(prime_numbers)
+        self.group_offset: int = 8  # random.choice(prime_numbers)
 
         self.power_max: int = 7
 
@@ -208,6 +208,9 @@ class Messenger:
 
         display.scroll("image")
         sleep(500)
+
+        self.image_index: int = -1
+        self.image_name: str = ""
 
         selected_image: bool = False
 
