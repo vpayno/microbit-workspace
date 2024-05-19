@@ -260,3 +260,21 @@ stage2: rock-paper-scissor move selection
 stage3: both microbits loop sending and receiving until they receive the other's "move".
 
 - `button_a` or `button_b` will unpause and return to the move selection stage.
+
+## [High Card](./src/high-card.py)
+
+Simple two player high card game. Keeps the selection simple to just 0 to 9 inclusive.
+
+stage1: radio group selection
+
+- `button_a`: scroll backward between `0` and `255` by decrements of 7.
+- `button_b`: scroll forward between `0` and `255` by increments of 7.
+- `pin_logo`: confirms radio group selection.
+
+stage2: card selection
+
+- `button_a`: scroll backward `[0..9]`
+- `button_b`: scroll forward `[0..9]`
+- `pin_logo`: confirms move selection.
+
+stage3: both microbits loop sending and receiving until they receive the other's "card".
