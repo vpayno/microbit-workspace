@@ -156,7 +156,7 @@ class Icons:
         "00900:"
     )  # fmt: off
 
-    # double horizontal arrow
+    # rock
     ROCK: Image = Image(
         "09900:"
         "90009:"
@@ -165,7 +165,7 @@ class Icons:
         "09990:"
     )  # fmt: off
 
-    # double horizontal arrow
+    # paper
     PAPER: Image = Image(
         "99999:"
         "90009:"
@@ -174,13 +174,13 @@ class Icons:
         "99999:"
     )  # fmt: off
 
-    # double horizontal arrow
+    # scissors
     SCISSORS: Image = Image(
         "90009:"
         "09090:"
         "00900:"
-        "09090:"
-        "09090:"
+        "99099:"
+        "99099:"
     )  # fmt: off
 
 
@@ -200,7 +200,7 @@ class RockPaperScissors:
 
         self.group: int = -1
         self.group_size: int = 256
-        self.group_offset: int = 7  # random.choice(prime_numbers)
+        self.group_offset: int = 8  # random.choice(prime_numbers)
 
         self.power_max: int = 7
 
@@ -267,6 +267,9 @@ class RockPaperScissors:
 
         display.scroll("move")  # less confusing for users than "runes"
         sleep(500)
+
+        self.rune_index: int = -1
+        self.rune_name: str = ""
 
         selected_rune: bool = False
 
