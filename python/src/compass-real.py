@@ -3,6 +3,8 @@ from microbit import *
 
 
 class Compass:
+    """Attempts to mimic a real compass."""
+
     DEGREES_N: int = 0
     DEGREES_NE: int = 45
     DEGREES_E: int = 90
@@ -20,6 +22,11 @@ class Compass:
         print("If you don't see any output, please calibrate the compass.")
 
     def run(self) -> None:
+        """
+        1. Probe compass
+        2. Draw arrow
+        """
+
         # this call will make you play fill the screen/dots to calibrate
         # the compas - when it's ready it will display a smily face
         self.heading = compass.heading()
@@ -76,6 +83,8 @@ class Compass:
         self.draw_arrows()
 
     def draw_arrows(self) -> None:
+        """Draws the "arrows" for the 4 bearings."""
+
         display.clear()
 
         self.north_arrow()
@@ -84,6 +93,8 @@ class Compass:
         self.east_arrow()
 
     def north_arrow(self) -> None:
+        """Draws the north "arrow" """
+
         # 0,0 -> top-left corner
         column: int = 0
         row: int = 0
@@ -154,6 +165,8 @@ class Compass:
             display.set_pixel(column - 2, row + 2, brightness - 6)
 
     def south_arrow(self) -> None:
+        """Draws the south "arrow" """
+
         # 0,0 -> top-left corner
         column: int = 0
         row: int = 0
@@ -208,6 +221,8 @@ class Compass:
             display.set_pixel(column, row, brightness)
 
     def west_arrow(self) -> None:
+        """Draws the west "arrow" """
+
         # 0,0 -> top-left corner
         column: int = 0
         row: int = 0
@@ -262,6 +277,8 @@ class Compass:
             display.set_pixel(column, row, brightness)
 
     def east_arrow(self) -> None:
+        """Draws the east "arrow" """
+
         # 0,0 -> top-left corner
         column: int = 0
         row: int = 0
