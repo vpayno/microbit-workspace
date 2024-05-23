@@ -1,5 +1,7 @@
 # Imports go at the top
 
+import random
+
 import music
 import radio
 from microbit import *
@@ -56,7 +58,14 @@ class Wheel:
         ]
 
     def turn(self) -> Image:
+        """
+        Turns the wheel by one position.
+
+        :return: the next wheel image
+        """
+
         self.wheel_index = (self.wheel_index + 1) % len(self.wheels)
+
         return self.wheels[self.wheel_index]
 
 
@@ -118,7 +127,8 @@ class HighCard:
         print("INFO: enabled radio")
 
         self.group_browse()
-        self.rune_browse()
+        # self.rune_browse()
+        self.rune_random_draw()
 
     def group_browse(self) -> None:
         """Helps the user select the 'radio frequency'."""
@@ -207,6 +217,18 @@ class HighCard:
 
         self.message: str = self.rune_name
 
+    def rune_random_draw(self) -> None:
+        """Instead of letting the user pick a card, draw one at random."""
+
+        self.rune_value = random.randint(self.runes[0], self.runes[-1])
+        self.rune_name = str(self.rune_value)
+
+        print("INFO: randomly selected rune [" + self.rune_name + "]")
+        display.scroll("c:" + self.rune_name)
+        sleep(1_000)
+
+        self.message: str = self.rune_name
+
     def run(self) -> None:
         """Runs the send/receive loop."""
 
@@ -263,11 +285,15 @@ class HighCard:
 
 
 def reset_button_events() -> None:
+    """Resets button events to help prevent button press stacking."""
+
     _ = button_a.was_pressed()
     _ = button_b.was_pressed()
 
 
 def wait_on_any_button() -> None:
+    """Waits for a any key press."""
+
     print("INFO: Waiting on any-key press")
     reset_button_events()
     while not (button_a.was_pressed() or button_b.was_pressed()):
@@ -308,4 +334,5 @@ while True:
 
     wait_on_any_button()
 
-    app.rune_browse()
+    # app.rune_browse()
+    app.rune_random_draw()
