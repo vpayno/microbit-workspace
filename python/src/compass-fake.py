@@ -3,6 +3,8 @@ from microbit import *
 
 
 class Compass:
+    """Fake Compass"""
+
     DEGREES_N: int = 0
     DEGREES_NE: int = 45
     DEGREES_E: int = 90
@@ -19,6 +21,11 @@ class Compass:
         print("INFO: If you don't see any output, please calibrate the compass.")
 
     def run(self) -> None:
+        """
+        1. Probe compass
+        2. Draw arrow
+        """
+
         # this call will make you play fill the screen/dots to calibrate
         # the compas - when it's ready it will display a smily face
         self.heading = compass.heading()
