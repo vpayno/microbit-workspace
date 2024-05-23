@@ -23,6 +23,11 @@ class Dice:
         print("INFO: sides:" + str(self.sides) + " roll:" + str(self.roll))
 
     def was_shaken(self) -> bool:
+        """Checks to see if the dice was shaken.
+
+        :return: true when the last gesture was "shake"
+        """
+
         if accelerometer.was_gesture("shake"):
             print("INFO: shaken, not stirred")
 
@@ -43,6 +48,11 @@ class Dice:
         return False
 
     def was_touched(self) -> bool:
+        """Checks to see if the logo pin is being held.
+
+        :return: true if the user is currently touching the pin logo
+        """
+
         if pin_logo.is_touched():
             print("INFO: touched, not shaken")
 
