@@ -4,6 +4,8 @@ from microbit import *
 
 
 class Icons:
+    """Various application icons."""
+
     ARROW_UP: Image = Image.ARROW_N
     ARROW_RT: Image = Image.ARROW_E
     ARROW_LT: Image = Image.ARROW_W
@@ -63,6 +65,8 @@ class Icons:
 
 
 class Wheel:
+    """Manages images of a spinning wheel."""
+
     wheel0: Image = Image(
         "00900:"
         "00900:"
@@ -113,190 +117,241 @@ class Wheel:
         ]
 
     def turn(self) -> Image:
+        """Returns the next image in the self.wheel animation."""
+
         self.wheel_index = (self.wheel_index + 1) % len(self.wheels)
+
         return self.wheels[self.wheel_index]
 
 
-def reset_button_events() -> None:
-    button_a.was_pressed()
-    button_b.was_pressed()
+class Timer:
+    """Simple timer experiment."""
 
+    def __init__(self) -> None:
+        self.icons = Icons()
 
-icons = Icons()
+        # first button selection starts at the second index
+        # all of these are sorted h -> s -> m
+        self.units: "list[str]" = ["h", "s", "m"]
+        self.unit_multipliers: "list[int]" = [60 * 60, 1, 60]
+        self.duration_limits: "list[int]" = [24, 90, 90]
 
-print("INFO: Microbit Timer")
+        # first button selection starts at the second index
+        self.offsets: "list[int]" = [45, 1, 5, 10, 30]
 
-# first button selection starts at the second index
-# all of these are sorted h -> s -> m
-units: "list[str]" = ["h", "s", "m"]
-unit_multipliers: "list[int]" = [60 * 60, 1, 60]
-duration_limits: "list[int]" = [24, 90, 90]
+        # annotations are limited, using zero values instead of None
+        self.duration: int = 0
+        self.unit: str = "x"
+        self.time_remaining: int = 0
+        self.offset: int = 0
 
-# first button selection starts at the second index
-offsets: "list[int]" = [45, 1, 5, 10, 30]
+        self.units_index: int = 0
+        self.duration_index: int = 0
+        self.offset_index: int = 0
 
-# annotations are limited, using zero values instead of None
-duration: int = 0
-unit: str = "x"
-time_remaining: int = 0
-offset: int = 0
+        self.units_selected: bool = False
+        self.duration_selected: bool = False
 
-units_index: int = 0
-duration_index: int = 0
-offset_index: int = 0
+        display.show(self.icons.LOGO)
+        sleep(2_000)
 
-units_selected: bool = False
-duration_selected: bool = False
+        self.reset_button_events()
 
-display.show(icons.LOGO)
-sleep(2_000)
+    def reset_button_events(self) -> None:
+        """Helps prevent button press stacking."""
 
-reset_button_events()
+        button_a.was_pressed()
+        button_b.was_pressed()
 
+    def select_units(self) -> None:
+        """UI to select the timer duration units."""
 
-# Code in a 'while True:' loop repeats forever
-while True:
-    print("INFO: selecting units")
-    while not units_selected or unit == "x":
-        if unit != "x":
-            display.show(icons.ARROW_RT)
+        print("INFO: selecting self.units")
+        while not self.units_selected or self.unit == "x":
+            if self.unit != "x":
+                display.show(self.icons.ARROW_RT)
+                sleep(500)
+
+            display.show(self.icons.ARROW_LT)
             sleep(500)
 
-        display.show(icons.ARROW_LT)
-        sleep(500)
+            if self.unit != "x":
+                display.scroll("u:" + self.unit)
 
-        if unit != "x":
-            display.scroll("u:" + unit)
+            if button_a.was_pressed():
+                self.reset_button_events()
+                self.units_index = (self.units_index + 1) % len(self.units)
+                self.unit = self.units[self.units_index]
+                print("INFO: selected self.units: " + self.unit)
+                display.show(self.units[self.units_index])
+                sleep(1_000)
 
-        if button_a.was_pressed():
-            reset_button_events()
-            a_pressed_once = True
-            units_index = (units_index + 1) % len(units)
-            unit = units[units_index]
-            print("INFO: selected units: " + unit)
-            display.show(units[units_index])
-            sleep(1_000)
+            b_pressed: bool = button_b.was_pressed()
 
-        b_pressed: bool = button_b.was_pressed()
-
-        if b_pressed and unit != "x":
-            reset_button_events()
-            units_selected = True
-            print("INFO: units confirmed")
-            display.show("u:" + unit)
-            sleep(1_000)
-            display.show(Image.YES)
-            sleep(1_000)
-        elif b_pressed:
-            reset_button_events()
-            print("ERROR: must select a valid time unit")
-            display.show(Image.NO)
-            sleep(1_000)
-
-    print("INFO: selecting duration in " + unit)
-    while not duration_selected:
-        display.show(icons.ARROW_UP)
-        sleep(1_000)
-
-        if offset != 0 and duration != 0:
-            display.show(icons.ARROW_RT)
-            sleep(1_000)
-
-        if offset != 0:
-            display.show(icons.ARROW_LT)
-            sleep(1_000)
-
-        if offset != 0 and duration != 0:
-            display.scroll("d:" + str(duration) + " o:" + str(offset))
-
-        if pin_logo.is_touched():
-            pin_pressed_once = True
-            offset_index = (offset_index + 1) % len(offsets)
-            offset = offsets[offset_index]
-            print("INFO: new duration selection offset is " + str(offset))
-            display.scroll("+" + str(offset))
-            sleep(1_000)
-
-        if button_a.was_pressed() and offset != 0:
-            reset_button_events()
-            duration = (duration + offset) % duration_limits[units_index]
-            print("INFO: duration: " + str(duration) + unit + " (offset=" + str(offset) + ")")
-            display.scroll(str(duration) + unit)
-            sleep(1_000)
-
-        b_pressed: bool = button_b.was_pressed()
-        reset_button_events()
-
-        if b_pressed and (offset != 0 or duration != 0):
-            if duration != 0:
-                duration_selected = True
-                time_remaining = duration * unit_multipliers[units_index]
-                print("INFO: duration confirmed")
-                display.scroll("t:" + str(duration) + unit)
+            if b_pressed and self.unit != "x":
+                self.reset_button_events()
+                self.units_selected = True
+                print("INFO: self.units confirmed")
+                display.show("u:" + self.unit)
                 sleep(1_000)
                 display.show(Image.YES)
                 sleep(1_000)
-        elif b_pressed and (offset == 0 or duration == 0):
-            print("ERROR: must select a positive offset and duration")
-            display.show(Image.NO)
+            elif b_pressed:
+                self.reset_button_events()
+                print("ERROR: must select a valid time self.unit")
+                display.show(Image.NO)
+                sleep(1_000)
+
+    def select_duration(self) -> None:
+        """UI to select the timer duration."""
+
+        print("INFO: selecting self.duration in " + self.unit)
+        while not self.duration_selected:
+            display.show(self.icons.ARROW_UP)
             sleep(1_000)
 
-    reset_button_events()
-    display.show(Image.ARROW_E)
-    print("INFO: waiting on button b press to start timer")
-    hold: bool = True
-    while hold:
-        if button_a.was_pressed():
-            print("INFO: timer was canceled")
-            display.show(Image.NO)
+            if self.offset != 0 and self.duration != 0:
+                display.show(self.icons.ARROW_RT)
+                sleep(1_000)
+
+            if self.offset != 0:
+                display.show(self.icons.ARROW_LT)
+                sleep(1_000)
+
+            if self.offset != 0 and self.duration != 0:
+                display.scroll("d:" + str(self.duration) + " o:" + str(self.offset))
+
+            if pin_logo.is_touched():
+                self.offset_index = (self.offset_index + 1) % len(self.offsets)
+                self.offset = self.offsets[self.offset_index]
+                print("INFO: new self.duration selection self.offset is " + str(self.offset))
+                display.scroll("+" + str(self.offset))
+                sleep(1_000)
+
+            if button_a.was_pressed() and self.offset != 0:
+                self.reset_button_events()
+                self.duration = (self.duration + self.offset) % self.duration_limits[self.units_index]
+                print(
+                    "INFO: self.duration: " + str(self.duration) + self.unit + " (self.offset=" + str(self.offset) + ")"
+                )
+                display.scroll(str(self.duration) + self.unit)
+                sleep(1_000)
+
+            b_pressed: bool = button_b.was_pressed()
+            self.reset_button_events()
+
+            if b_pressed and (self.offset != 0 or self.duration != 0):
+                if self.duration != 0:
+                    self.duration_selected = True
+                    self.time_remaining = self.duration * self.unit_multipliers[self.units_index]
+                    print("INFO: self.duration confirmed")
+                    display.scroll("t:" + str(self.duration) + self.unit)
+                    sleep(1_000)
+                    display.show(Image.YES)
+                    sleep(1_000)
+            elif b_pressed and (self.offset == 0 or self.duration == 0):
+                print("ERROR: must select a positive self.offset and self.duration")
+                display.show(Image.NO)
+                sleep(1_000)
+
+    def prompt_to_start_timer(self) -> None:
+        """UI for the user to start the timer."""
+
+        self.reset_button_events()
+        display.show(Image.ARROW_E)
+        print("INFO: waiting on button b press to start timer")
+        hold: bool = True
+        while hold:
+            if button_a.was_pressed():
+                print("INFO: timer was canceled")
+                display.show(Image.NO)
+                sleep(1_000)
+                reset()  # probably canceled because the settings are wrong, start over
+
+            if button_b.was_pressed():
+                hold = False
+                print("INFO: timer started")
+                display.show(Image.YES)
+                sleep(500)
+
+    def run_timer(self) -> None:
+        """The running timer."""
+
+        warn_at: int = int(self.time_remaining * 0.10)
+
+        print("INFO: starting timer of " + str(self.duration) + self.units[self.units_index])
+        print("INFO: 10% waring time: " + str(warn_at) + " seconds")
+
+        self.wheel = Wheel()
+        while self.time_remaining > 0:
+            print("INFO: time left: " + str(self.time_remaining) + " seconds")
+            display.show(self.wheel.turn())
             sleep(1_000)
-            reset()  # probably canceled because the settings are wrong, start over
+
+            if warn_at == self.time_remaining:
+                print("INFO: playing 10% waring sound")
+                music.play(music.BADDY)
+                sleep(500)
+
+            self.time_remaining -= 1
+
+            if button_a.was_pressed():
+                print("INFO: timer was aborted")
+                display.show(Image.NO)
+                sleep(1_000)
+                self.time_remaining = -1
+
+            if button_b.was_pressed():
+                print("INFO: timer paused")
+                display.show(self.icons.PAUSE)
+                print("INFO: waiting on button b press to unpause timer")
+                while not button_b.was_pressed():
+                    sleep(500)
+                print("INFO: timer resuming...")
+                display.show(Image.YES)
+                sleep(500)
+                _ = button_a.was_pressed()  # reset button_a only to prevent accidental cancel
+
+        print("INFO: timer completed")
+        display.show(Image.FABULOUS)
+        music.play(music.DADADADUM)
+
+    def reset_options(self) -> None:
+        """Resets timer options."""
+
+        display.show(Image.NO)
+        sleep(1_000)
+        reset()  # probably canceled because the settings are wrong, start over
 
         if button_b.was_pressed():
-            hold = False
             print("INFO: timer started")
             display.show(Image.YES)
             sleep(500)
 
-    warn_at: int = int(time_remaining * 0.10)
+    def reset_state(self) -> None:
+        """Resets timer options."""
 
-    print("INFO: starting timer of " + str(duration) + units[units_index])
-    print("INFO: 10% waring time: " + str(warn_at) + " seconds")
+        self.units_selected = False
+        self.duration_selected = False
 
-    wheel = Wheel()
-    while time_remaining > 0:
-        print("INFO: time left: " + str(time_remaining) + " seconds")
-        display.show(wheel.turn())
-        sleep(1_000)
+    def run(self) -> None:
+        """Runs the timer."""
 
-        if warn_at == time_remaining:
-            print("INFO: playing 10% waring sound")
-            music.play(music.BADDY)
-            sleep(500)
+        self.select_units()
+        self.select_duration()
+        self.prompt_to_start_timer()
+        self.run_timer()
+        self.reset_state()
 
-        time_remaining -= 1
 
-        if button_a.was_pressed():
-            print("INFO: timer was aborted")
-            display.show(Image.NO)
-            sleep(1_000)
-            time_remaining = -1
+print()
+print("INFO: Microbit Timer")
+print()
 
-        if button_b.was_pressed():
-            print("INFO: timer paused")
-            display.show(icons.PAUSE)
-            print("INFO: waiting on button b press to unpause timer")
-            while not button_b.was_pressed():
-                sleep(500)
-            print("INFO: timer resuming...")
-            display.show(Image.YES)
-            sleep(500)
-            _ = button_a.was_pressed()  # reset button_a only to prevent accidental cancel
+app: Timer = Timer()
 
-    print("INFO: timer completed")
-    display.show(Image.FABULOUS)
-    music.play(music.DADADADUM)
+# Code in a 'while True:' loop repeats forever
+while True:
+    app.run()
+
     sleep(10_000)
-
-    units_selected = False
-    duration_selected = False
