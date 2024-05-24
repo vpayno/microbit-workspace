@@ -40,7 +40,7 @@ class MyImages:
     )  # fmt: off
 
     hourglass_progress_2: Image = Image(
-        "99999:"
+        "90009:"
         "09990:"
         "00900:"
         "09690:"
@@ -48,7 +48,7 @@ class MyImages:
     )  # fmt: off
 
     hourglass_progress_3: Image = Image(
-        "99999:"
+        "90009:"
         "09990:"
         "00900:"
         "09090:"
