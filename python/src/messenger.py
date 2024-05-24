@@ -56,6 +56,11 @@ class Wheel:
         ]
 
     def turn(self) -> Image:
+        """Turns the wheel by one step.
+
+        :return: the next wheel image
+        """
+
         self.wheel_index = (self.wheel_index + 1) % len(self.wheels)
         return self.wheels[self.wheel_index]
 
@@ -257,11 +262,15 @@ class Messenger:
 
 
 def reset_button_events() -> None:
+    """Reset the button events to help prevent button event stacking."""
+
     _ = button_a.was_pressed()
     _ = button_b.was_pressed()
 
 
 def wait_on_any_button() -> None:
+    """Wait on an "any" key press."""
+
     print("INFO: Waiting on any-key press")
     reset_button_events()
     while not (button_a.was_pressed() or button_b.was_pressed()):
