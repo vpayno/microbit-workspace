@@ -263,7 +263,8 @@ stage3: both microbits loop sending and receiving until they receive the other's
 
 ## [High Card](./src/high-card.py)
 
-Simple two player high card game. Keeps the selection simple to just 0 to 9 inclusive.
+Simple two player high card game.
+Each player gets a random number from 0 to 9, inclusive, and then exchange them to see who won.
 
 stage1: radio group selection
 
@@ -271,7 +272,7 @@ stage1: radio group selection
 - `button_b`: scroll forward between `0` and `255` by increments of 7.
 - `pin_logo`: confirms radio group selection.
 
-stage2: card selection
+stage2: card selection - replaced with RNG
 
 - `button_a`: scroll backward `[0..9]`
 - `button_b`: scroll forward `[0..9]`
